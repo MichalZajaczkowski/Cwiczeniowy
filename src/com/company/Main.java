@@ -1,34 +1,45 @@
 package com.company;
 
-import java.text.DecimalFormat;
-import java.util.LinkedList;
-import java.util.Random;
+
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        numberOfCalculations2();
-    }
+        Scanner enterNumberOfNames = new Scanner(System.in);
+        System.out.print("Podaj ilość imion: ");
+        int numberOfNames = enterNumberOfNames.nextInt();
 
-    private static void numberOfCalculations2() {
-        int numberOfCircuitsLoop = 5;
-        Fraction fraction2 = new Fraction();
-        for (int i = 0; i <= numberOfCircuitsLoop; i++) {
-            fraction2.setCounter(randMathRandom());
-            fraction2.setDenominator(randMathRandom());
-            System.out.println(df2.format(fraction2.Calculator()));
+
+        Scanner enterNames = new Scanner(System.in);
+        System.out.println("Podaj imiona: ");
+        String[] nameTab = new String[numberOfNames];
+
+        //pobranie danych
+        for(int i = 0; i< numberOfNames; i++) {
+            nameTab[i] = enterNames.nextLine();
         }
-    }
+        //wyświetlenie najdłuższego imienia
+        List<String> names = Arrays.asList(nameTab);
 
-    private static DecimalFormat df2 = new DecimalFormat("#.##");
+        String longestName = "";
 
-    private static int randMathRandom(){
-        LinkedList m = new LinkedList();
-        Random generator = new Random();
-        int re = generator.nextInt();
-        for(int i=0; i<1; i++) {
-            m.add(generator.nextDouble());
+        for (String name : names) {
+            if (name.length() > longestName.length()) {
+                longestName = name;
+            }
         }
-        return re;
+        System.out.println("Longest name: " + longestName);
+
+        //wyświetlenie najkrutszego imienia
+
+        String shortestName = longestName;
+
+        for (String name : names) {
+            if (name.length() < shortestName.length()) {
+                shortestName = name;
+            }
+        }
+        System.out.println("shortest name: " + shortestName);
     }
 }
