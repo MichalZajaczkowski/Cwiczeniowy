@@ -16,14 +16,14 @@ public class Main {
         String[] nameTab = new String[numberOfNames];
 
         //pobranie danych
-        for(int i = 0; i< numberOfNames; i++) {
+        for (int i = 0; i < numberOfNames; i++) {
             nameTab[i] = enterNames.nextLine();
         }
-        //wyświetlenie najdłuższego imienia
+
         List<String> names = Arrays.asList(nameTab);
 
+        //wyświetlenie najdłuższego imienia
         String longestName = "";
-
         for (String name : names) {
             if (name.length() > longestName.length()) {
                 longestName = name;
@@ -31,7 +31,7 @@ public class Main {
         }
         System.out.println("Longest name: " + longestName);
 
-        //wyświetlenie najkrutszego imienia
+        //wyświetlenie najkrótszego imienia
 
         String shortestName = longestName;
 
@@ -40,6 +40,6 @@ public class Main {
                 shortestName = name;
             }
         }
-        System.out.println("shortest name: " + shortestName);
+        System.out.println("Shortest name: " + shortestName);
     }
 }
