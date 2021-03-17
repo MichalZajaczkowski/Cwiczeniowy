@@ -21,6 +21,8 @@ public class Main {
         }
 
         List<String> names = Arrays.asList(nameTab);
+        Set<String> namesSet = new HashSet<>(names);
+       // Map<String, Integer> mapName = new HashMap<>();
 
         //wyświetlenie najdłuższego imienia
         String longestName = "";
@@ -41,5 +43,8 @@ public class Main {
             }
         }
         System.out.println("Shortest name: " + shortestName);
+        for (String word : namesSet) {
+            System.out.println(word + ": " + Collections.frequency(names, word));
+        }
     }
 }
