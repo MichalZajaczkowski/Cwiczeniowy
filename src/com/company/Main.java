@@ -1,28 +1,51 @@
 package com.company;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        Scanner enterNumberOfNames = new Scanner(System.in);
+        System.out.print("Podaj ilość imion: ");
+        int numberOfNames = enterNumberOfNames.nextInt();
 
-        int[] tab = {107, 36, -3, 0, 27, 6};
 
-        sort(tab);
-        System.out.print("Zawartość posortowanej tablicy:");
-        for (int tabElement : tab) {
-            System.out.print(" " + tabElement);
+        Scanner enterNames = new Scanner(System.in);
+        System.out.println("Podaj imiona: ");
+        String[] nameTab = new String[numberOfNames];
+
+        //pobranie danych
+        for (int i = 0; i < numberOfNames; i++) {
+            nameTab[i] = enterNames.nextLine();
         }
-    }
 
-    private static void sort(int[] tab) {
-        int tabSize = tab.length;
-        int counter = 0;
-        for (int i = 0; i < tabSize; i++) {
-            for (int j = 1; j < (tabSize - i); j++) {
-                if (tab[j - 1] > tab[j]) {
-                    counter = tab[j - 1];
-                    tab[j - 1] = tab[j];
-                    tab[j] = counter;
-                }
+        List<String> names = Arrays.asList(nameTab);
+        Set<String> namesSet = new HashSet<>(names);
+        // Map<String, Integer> mapName = new HashMap<>();
+
+        //wyświetlenie najdłuższego imienia
+        String longestName = "";
+        for (String name : names) {
+            if (name.length() > longestName.length()) {
+                longestName = name;
+            }
+        }
+        System.out.println("Longest name: " + longestName);
+
+        //wyświetlenie najkrótszego imienia
+
+        String shortestName = longestName;
+
+        for (String name : names) {
+            if (name.length() < shortestName.length()) {
+                shortestName = name;
+            }
+        }
+        System.out.println("Shortest name: " + shortestName);
+        int counter = 1;
+        for (String word : namesSet) {
+            int freq = Collections.frequency(names, word);
+            if (counter < freq) {
+                System.out.println(word + ": " + freq);
             }
         }
     }
