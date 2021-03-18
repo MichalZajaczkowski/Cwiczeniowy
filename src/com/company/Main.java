@@ -1,52 +1,27 @@
 package com.company;
-import java.util.*;
+
+
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        Scanner enterNumberOfNames = new Scanner(System.in);
-        System.out.print("Podaj ilość imion: ");
-        int numberOfNames = enterNumberOfNames.nextInt();
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("write name: ");
+        String name = scanner.nextLine();
+        System.out.println(evenOrOdd(name));
+    }
 
-        Scanner enterNames = new Scanner(System.in);
-        System.out.println("Podaj imiona: ");
-        String[] nameTab = new String[numberOfNames];
+    private static boolean evenOrOdd(String name) {
+        String[] strings = name.split("");
+            if (strings.length % 2 == 0) {
+                System.out.println("parzyste");
+                return true;
+            } else {
+                System.out.println("nieparzyste");
 
-        //pobranie danych
-        for (int i = 0; i < numberOfNames; i++) {
-            nameTab[i] = enterNames.nextLine();
         }
-
-        List<String> names = Arrays.asList(nameTab);
-        Set<String> namesSet = new HashSet<>(names);
-        // Map<String, Integer> mapName = new HashMap<>();
-
-        //wyświetlenie najdłuższego imienia
-        String longestName = "";
-        for (String name : names) {
-            if (name.length() > longestName.length()) {
-                longestName = name;
-            }
-        }
-        System.out.println("Longest name: " + longestName);
-
-        //wyświetlenie najkrótszego imienia
-
-        String shortestName = longestName;
-
-        for (String name : names) {
-            if (name.length() < shortestName.length()) {
-                shortestName = name;
-            }
-        }
-        System.out.println("Shortest name: " + shortestName);
-        int counter = 1;
-        for (String word : namesSet) {
-            int freq = Collections.frequency(names, word);
-            if (counter < freq) {
-                System.out.println(word + ": " + freq);
-            }
-        }
+        return false;
     }
 }
